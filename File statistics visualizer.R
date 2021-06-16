@@ -1,5 +1,13 @@
 # File statistics visualizer
 
+source(r"(C:\Users\leewa\Documents\Important documents\Computer Science\R Projects\File statistics visualizer\Print directory.R)")
+
+file_frequency <- data.frame(
+  file_type <- character(),
+  frequency <- integer(),
+  stringsAsFactors = FALSE
+  )
+
 file_statistics_visualizer_driver <- function(){
   name = readline(prompt = "Directory or file name: ")  # Get user input on directory
   if (!dir.exists(name) && !file.exists(name)){
@@ -10,10 +18,10 @@ file_statistics_visualizer_driver <- function(){
 }
 
 file_statistics_visualizer <- function(name, level){
-  if (level != 0){  # seq(0) is the same as c(1, 0)
-    for (i in seq(level)){
-      cat("    ")
-    }
+  if (file.exists(name)){  # If it is a file
+    print("hello")
+    file_name = basename(name)
+    split_name = strsplit(file_name, split = ".", fixed = TRUE)    
   }
   
   print(basename(name))
@@ -27,6 +35,8 @@ file_statistics_visualizer <- function(name, level){
 }
 
 file_statistics_visualizer_driver()
+
+print_directory_driver()
 
 dev.off()  # Clear plots
 cat('\014')  # Clear console
