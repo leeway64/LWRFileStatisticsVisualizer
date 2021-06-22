@@ -18,13 +18,18 @@ file_statistics_visualizer_driver <- function(){
 }
 
 file_statistics_visualizer <- function(name, level){
-  if (file.exists(name)){  # If it is a file
-    print("hello")
+  if (!dir.exists(name)){  # If it is not a directory, then it must be a file
+    # print(basename(name))
     file_name = basename(name)
-    split_name = strsplit(file_name, split = ".", fixed = TRUE)    
+    split_name = strsplit(file_name, split = ".", fixed = TRUE)
+    if (length(split_name[[1]]) == 1){
+      file_type = "No file type"
+    }else{
+      file_type = tail(split_name[[1]], n = 1)
+    }
+    print(file_type[1])
   }
-  
-  print(basename(name))
+  # print(basename(name))
   if (dir.exists(name)){
     # list.files lists all files and subdirectories within the current directory
     for (file in list.files(name)){
