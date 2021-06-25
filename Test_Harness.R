@@ -7,10 +7,12 @@ source(r"(C:\Users\leewa\Documents\Important documents\Computer Science\R Projec
 source(r"(C:\Users\leewa\Documents\Important documents\Computer Science\R Projects\File statistics visualizer\File statistics visualizer.R)")
 
 # File type testing
-test_that("PDF", expect_equal(1, 1))
-print(find_file_type("test.z.z.z.z.z.a.a.a.ab.b.b.c.d"))
+test_that("pdf", expect_equal(find_file_type("file.pdf"), "pdf"))
+test_that("docx", expect_equal(find_file_type("word.docx"), "docx"))
+test_that("md", expect_equal(find_file_type(r"(C:\Users\leewa\Documents\Important documents\Computer Science\R Projects\File statistics visualizer\README.md)"), "md"))
+
+test_that("No file type", expect_equal(find_file_type("none"), "No file type"))
 
 
-dev.off()  # Clear plots
 cat('\014')  # Clear console
 rm(list = ls())  # Clear variables
