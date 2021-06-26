@@ -44,11 +44,17 @@ find_file_type <- function(name){
     # print(basename(name))
     file_name = basename(name)
     split_name = strsplit(file_name, split = ".", fixed = TRUE)
-    if (length(split_name[[1]]) == 1){
+    # Accounts for files with no file type
+    if ((length(split_name[[1]]) == 1) && (str_count(name, "\\.") == 0)){
       file_type = "No file type"
+    # Accounts for files like ".gitignore"
+    }else if((length(split_name[[1]]) == 1) && (str_count(name, "\\.") == 1)){
+      file_type = tolower(tail(split_name[[1]], n = 1))
+    # Accounts for all other files, even including "Digital-Signal-Processor.vcxproj.filters"
     }else{
-      file_type = tail(split_name[[1]], n = 1)
-      file_type = tolower(file_type)
+      locate_all_periods = str_locate_all(pattern = "\\.", file_name)
+      first_period_location = locate_all_periods[[1]][1, 1]
+      file_type = tolower(substring(file_name, first_period_location + 1, ))
     }
     return(file_type)
   } 
