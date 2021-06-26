@@ -1,9 +1,11 @@
 # File statistics visualizer
 
+library(stringr)
+
 # Data frame that holds the counts of each file type
 file_frequency_data_frame <- data.frame(
-  file_type <- character(),
-  frequency <- integer(),
+  file_type <- c(),
+  frequency <- c(),
   stringsAsFactors = FALSE
   )
 
@@ -21,7 +23,9 @@ file_statistics_visualizer_driver <- function(){
 # @param file_type is the name of the file type as a character data type
 add_file_type_to_data_frame <- function(file_type){
   if (any(file_frequency_data_frame == file_type)){  # If the data frame already has the file type...
-    file_frequency_data_frame[file_frequency_data_frame$var1 == file_type, 2] = file_frequency_data_frame[file_frequency_data_frame$var1 == file_type, 2] + 1  # increment the count of that file type
+    # increment the count of that file type by 1
+    file_frequency_data_frame[file_frequency_data_frame$file_type == file_type, 2] = 1
+                + file_frequency_data_frame[file_frequency_data_frame$file_type == file_type, 2]
     
   }else {  # If not, then create a new row labeled with the file type and set the count to 1
     new_file_type_row <- data.frame(
@@ -44,8 +48,8 @@ find_file_type <- function(name){
       file_type = "No file type"
     }else{
       file_type = tail(split_name[[1]], n = 1)
+      file_type = tolower(file_type)
     }
-    file_type = tolower(file_type)
     return(file_type)
   } 
 }
