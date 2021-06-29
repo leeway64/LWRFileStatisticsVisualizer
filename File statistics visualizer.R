@@ -18,7 +18,8 @@ add_file_type_to_data_frame <- function(file_type, data_frame){
   # data_frame$file_type = append(data_frame$file_type, "pdf")
   if (any(data_frame == file_type)){  # If the data frame already has the file type...
     # increment the count of that file type by 1
-    data_frame[data_frame$file_type == file_type, 2] = 1 + data_frame[data_frame$file_type == file_type, 2]
+    file_type_index = data_frame$file_type == file_type
+    data_frame[file_type_index, 2] = 1 + data_frame[file_type_index, 2]
 
   }else {  # If not, then create a new row labeled with the file type and set the count to 1
     new_file_type_row <- data.frame(
