@@ -8,8 +8,24 @@ file_statistics_visualizer_driver <- function(){
   if (!dir.exists(name) && !file.exists(name)){
     print("That file or directory does not exist")
   }else{
-    file_statistics_visualizer(name, 0)
+    # Data frame that holds the counts of each file type
+    file_frequency_data_frame <- data.frame(
+      file_type <- c(),
+      frequency <- c(),
+      stringsAsFactors = FALSE
+    )
+    file_frequency_data_frame <- get_file_statistics(name, 0)
+    create_bar_chart()
+    create_pie_chart()
   }
+}
+
+create_bar_chart <- function(data_frame){
+  
+}
+
+create_pie_chart <- function(data_frame){
+  
 }
 
 # Adds a file type to the file_frequency data frame
@@ -56,15 +72,8 @@ find_file_type <- function(name){
 }
 
 # Function that displays a bar chart and pie chart of the file types within a given directory
-file_statistics_visualizer <- function(name, level){
+get_file_statistics <- function(name, level){
   file_type = find_file_type(name)
-  
-  # Data frame that holds the counts of each file type
-  file_frequency_data_frame <- data.frame(
-    file_type <- c(),
-    frequency <- c(),
-    stringsAsFactors = FALSE
-  )
   
   file_frequency_data_frame = add_file_type_to_data_frame(file_type, file_frequency_data_frame)
   # print(basename(name))
@@ -72,7 +81,7 @@ file_statistics_visualizer <- function(name, level){
     # list.files lists all files and subdirectories within the current directory
     for (file in list.files(name)){
       path = file.path(name, file)
-      file_statistics_visualizer(path, level + 1)
+      get_file_statistics(path, level + 1)
     }
   }
 }

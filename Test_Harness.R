@@ -32,22 +32,22 @@ file_frequency_data_frame <- data.frame(
 test_that("Empty file_type vector", expect_equal(length(file_frequency_data_frame$file_type) == 0, TRUE))
 test_that("Empty frequency vector", expect_equal(length(file_frequency_data_frame$frequency) == 0, TRUE))
 
-file_frequency_data_frame = add_file_type_to_data_frame("pdf", file_frequency_data_frame)
+file_frequency_data_frame <- add_file_type_to_data_frame("pdf", file_frequency_data_frame)
 test_that("1 pdf in DF", expect_equal(file_frequency_data_frame$file_type[1], "pdf"))
 test_that("1 pdf in DF", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "pdf", 2], 1))
 
 test_that("DF doesn't have docx", expect_equal(file_frequency_data_frame$file_type == "docx", FALSE))
-file_frequency_data_frame = add_file_type_to_data_frame("docx", file_frequency_data_frame)
+file_frequency_data_frame <- add_file_type_to_data_frame("docx", file_frequency_data_frame)
 test_that("1 docx in DF", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "docx", 2], 1))
 
-file_frequency_data_frame = add_file_type_to_data_frame("vcxproj.user", file_frequency_data_frame)
+file_frequency_data_frame <- add_file_type_to_data_frame("vcxproj.user", file_frequency_data_frame)
 test_that("1 vcxproj.user in DF", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "vcxproj.user", 2], 1))
 
-file_frequency_data_frame = add_file_type_to_data_frame("vcxproj.user", file_frequency_data_frame)
+file_frequency_data_frame <- add_file_type_to_data_frame("vcxproj.user", file_frequency_data_frame)
 test_that("2 vcxproj.users in DF", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "vcxproj.user", 2], 2))
 
-file_frequency_data_frame = add_file_type_to_data_frame("pdf", file_frequency_data_frame)
-file_frequency_data_frame = add_file_type_to_data_frame("pdf", file_frequency_data_frame)
+file_frequency_data_frame <- add_file_type_to_data_frame("pdf", file_frequency_data_frame)
+file_frequency_data_frame <- add_file_type_to_data_frame("pdf", file_frequency_data_frame)
 test_that("3 pdfs in DF", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "pdf", 2], 3))
 
 
