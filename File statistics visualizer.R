@@ -14,7 +14,7 @@ file_statistics_visualizer_driver <- function(){
       frequency <- c(),
       stringsAsFactors = FALSE
     )
-    file_frequency_data_frame <- get_file_statistics(name, 0)
+    file_frequency_data_frame <- get_file_statistics(name, 0, file_frequency_data_frame)
     create_bar_chart()
     create_pie_chart()
   }
@@ -72,16 +72,17 @@ find_file_type <- function(name){
 }
 
 # Function that displays a bar chart and pie chart of the file types within a given directory
-get_file_statistics <- function(name, level){
+get_file_statistics <- function(name, level, data_frame){
   file_type = find_file_type(name)
   
-  file_frequency_data_frame = add_file_type_to_data_frame(file_type, file_frequency_data_frame)
+  data_frame = add_file_type_to_data_frame(file_type, data_frame)
   # print(basename(name))
   if (dir.exists(name)){
     # list.files lists all files and subdirectories within the current directory
     for (file in list.files(name)){
       path = file.path(name, file)
-      get_file_statistics(path, level + 1)
+      get_file_statistics(path, level + 1, data_frame)
     }
   }
+  return(data_frame)
 }
