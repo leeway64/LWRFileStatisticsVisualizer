@@ -1,6 +1,7 @@
 # File statistics visualizer
 
 library(stringr)
+library(dplyr)
 
 # Driver function for the file_statistics_visualizer function
 file_statistics_visualizer_driver <- function(){
@@ -15,17 +16,34 @@ file_statistics_visualizer_driver <- function(){
       stringsAsFactors = FALSE
     )
     file_frequency_data_frame <- get_file_statistics(name, file_frequency_data_frame)
-    create_bar_chart()
-    create_pie_chart()
+    # Sort file_frequency_data_frame in descending order
+    file_frequency_data_frame <- arrange(file_frequency_data_frame, desc(frequency))
+    
+    create_bar_chart(file_frequency_data_frame)
+    create_pie_chart(file_frequency_data_frame)
   }
 }
 
 create_bar_chart <- function(data_frame){
-  
+  barplot(data_frame$frequency,
+          main = "Counts of file types",
+          xlab = "File type",
+          ylab = "Frequency",
+          names = data_frame$file_type,
+          col = "blue")
 }
 
 create_pie_chart <- function(data_frame){
-  
+  frequency <- data_frame$frequency
+  pie_percentages <- round(100 * frequency / sum(frequency), 2)
+  pie(frequency,
+      labels = pie_percentages,
+      main = "File type percentages in this directory", 
+      col = rainbow(length(frequency)))
+  legend("bottomleft",
+         labels = data_frame$file_type,
+         cex = 0.8,
+         fill = rainbow(length(frequency)))
 }
 
 # Adds a file type to the file_frequency data frame

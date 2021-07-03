@@ -60,7 +60,41 @@ file_frequency_data_frame <- data.frame(
 )
 directory = r"(C:\Users\leewa\Documents\Important documents\Computer Science\R Projects\File statistics visualizer\Test directory)"
 file_frequency_data_frame <- get_file_statistics(directory, file_frequency_data_frame)
-test_that("", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "txt", 2], 2))
+test_that("2 txt files", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "txt", 2], 2))
+test_that("1 pptx file", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "pptx", 2], 1))
+test_that("1 xlsx file", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "xlsx", 2], 1))
+test_that("1 docx file", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "docx", 2], 1))
+test_that("4 rows/file types in DF", expect_equal(nrow(file_frequency_data_frame), 4))
+
+
+file_frequency_data_frame <- data.frame(
+  file_type <- c(),
+  frequency <- c(),
+  stringsAsFactors = FALSE
+)
+
+# This directory contains no files or other directories
+directory = r"(C:\Users\leewa\Documents\Important documents\Computer Science\R Projects\File statistics visualizer\Test directory\Subdir2\SubdirB)"
+file_frequency_data_frame <- get_file_statistics(directory, file_frequency_data_frame)
+test_that("Empty file_type vector", expect_equal(length(file_frequency_data_frame$file_type) == 0, TRUE))
+test_that("Empty frequency vector", expect_equal(length(file_frequency_data_frame$frequency) == 0, TRUE))
+test_that("0 rows/file types in DF", expect_equal(nrow(file_frequency_data_frame), 0))
+
+
+file_frequency_data_frame <- data.frame(
+  file_type <- c(),
+  frequency <- c(),
+  stringsAsFactors = FALSE
+)
+
+# Testing an actual directory this time
+directory = r"(C:\Users\leewa\Documents\Important documents\Learning Chinese\CHIN 111\Midterm - Oral)"
+file_frequency_data_frame <- get_file_statistics(directory, file_frequency_data_frame)
+test_that("2 jpg files", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "jpg", 2], 2))
+test_that("4 pdf files", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "pdf", 2], 4))
+test_that("1 file with no file type", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "No file type", 2], 1))
+test_that("3 docx files", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "docx", 2], 3))
+test_that("4 rows/file types in DF", expect_equal(nrow(file_frequency_data_frame), 4))
 
 print_directory_driver()
 cat('\014')  # Clear console
