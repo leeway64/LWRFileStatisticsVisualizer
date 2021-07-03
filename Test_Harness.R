@@ -29,6 +29,7 @@ file_frequency_data_frame <- data.frame(
   stringsAsFactors = FALSE
 )
 
+# Testing adding a file type to file frequency data frame
 test_that("Empty file_type vector", expect_equal(length(file_frequency_data_frame$file_type) == 0, TRUE))
 test_that("Empty frequency vector", expect_equal(length(file_frequency_data_frame$frequency) == 0, TRUE))
 
@@ -50,6 +51,16 @@ file_frequency_data_frame <- add_file_type_to_data_frame("pdf", file_frequency_d
 file_frequency_data_frame <- add_file_type_to_data_frame("pdf", file_frequency_data_frame)
 test_that("3 pdfs in DF", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "pdf", 2], 3))
 
+
+# Testing that the file frequency data frame has the correct counts of file types
+file_frequency_data_frame <- data.frame(
+  file_type <- c(),
+  frequency <- c(),
+  stringsAsFactors = FALSE
+)
+directory = r"(C:\Users\leewa\Documents\Important documents\Computer Science\R Projects\File statistics visualizer\Test directory)"
+file_frequency_data_frame <- get_file_statistics(directory, file_frequency_data_frame)
+test_that("", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "txt", 2], 2))
 
 print_directory_driver()
 cat('\014')  # Clear console
