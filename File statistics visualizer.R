@@ -2,6 +2,7 @@
 
 library(stringr)
 library(dplyr)
+library(tools)
 
 
 # Driver function. Prompts the user for a directory, then displays the statistics about the
@@ -82,22 +83,9 @@ add_file_type_to_data_frame <- function(file_type, data_frame){
 # Determines the file type of a certain file. name is the name of the file to find the file type of.
 # name is a character.
 find_file_type <- function(name){
-  file_name = basename(name)
-  split_name = strsplit(file_name, split = ".", fixed = TRUE)
-  periods_count <- str_count(file_name, "\\.")
-  # Accounts for files with no file type
-  if ((length(split_name[[1]]) == 1) && (periods_count == 0)){
-    file_type = "No file type"
-    
-  # Accounts for files like ".gitignore"
-  }else if((length(split_name[[1]]) == 1) && (periods_count == 1)){
-    file_type = tolower(tail(split_name[[1]], n = 1))
-    
-  # Accounts for all other files, including "Digital-Signal-Processor.vcxproj.filters"
-  }else{
-    locate_all_periods = str_locate_all(pattern = "\\.", file_name)
-    first_period_location = locate_all_periods[[1]][1, 1]
-    file_type = tolower(substring(file_name, first_period_location + 1, ))
+  file_type <- file_ext(name)
+  if (file_type == ""){
+    file_type <- "No file type"
   }
   return(file_type)
 }
