@@ -3,6 +3,7 @@
 library(stringr)
 library(dplyr)
 
+
 # Driver function. Prompts the user for a directory, then displays the statistics about the
 # directory.
 file_statistics_visualizer <- function(){
@@ -83,12 +84,15 @@ add_file_type_to_data_frame <- function(file_type, data_frame){
 find_file_type <- function(name){
   file_name = basename(name)
   split_name = strsplit(file_name, split = ".", fixed = TRUE)
+  periods_count <- str_count(file_name, "\\.")
   # Accounts for files with no file type
-  if ((length(split_name[[1]]) == 1) && (str_count(name, "\\.") == 0)){
+  if ((length(split_name[[1]]) == 1) && (periods_count == 0)){
     file_type = "No file type"
+    
   # Accounts for files like ".gitignore"
-  }else if((length(split_name[[1]]) == 1) && (str_count(name, "\\.") == 1)){
+  }else if((length(split_name[[1]]) == 1) && (periods_count == 1)){
     file_type = tolower(tail(split_name[[1]], n = 1))
+    
   # Accounts for all other files, including "Digital-Signal-Processor.vcxproj.filters"
   }else{
     locate_all_periods = str_locate_all(pattern = "\\.", file_name)
