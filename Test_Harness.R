@@ -6,6 +6,7 @@ library(testthat)
 source(r"(C:\Users\leewa\Documents\Important documents\Computer Science\R Projects\File statistics visualizer\Print directory.R)")
 source(r"(C:\Users\leewa\Documents\Important documents\Computer Science\R Projects\File statistics visualizer\File statistics visualizer.R)")
 
+
 # File type identification testing
 test_that("pdf", expect_equal(find_file_type("file.pdf"), "pdf"))
 test_that("docx", expect_equal(find_file_type("word.docx"), "docx"))
@@ -58,6 +59,7 @@ file_frequency_data_frame <- data.frame(
   frequency <- c(),
   stringsAsFactors = FALSE
 )
+
 directory = r"(C:\Users\leewa\Documents\Important documents\Computer Science\R Projects\File statistics visualizer\Test directory)"
 file_frequency_data_frame <- get_file_statistics(directory, file_frequency_data_frame)
 test_that("2 txt files", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "txt", 2], 2))
@@ -87,7 +89,7 @@ file_frequency_data_frame <- data.frame(
   stringsAsFactors = FALSE
 )
 
-# Testing an actual directory this time
+# Testing an actual directory
 directory = r"(C:\Users\leewa\Documents\Important documents\Learning Chinese\CHIN 111\Midterm - Oral)"
 file_frequency_data_frame <- get_file_statistics(directory, file_frequency_data_frame)
 test_that("2 jpg files", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "jpg", 2], 2))
@@ -96,6 +98,12 @@ test_that("1 file with no file type", expect_equal(file_frequency_data_frame[fil
 test_that("3 docx files", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "docx", 2], 3))
 test_that("4 rows/file types in DF", expect_equal(nrow(file_frequency_data_frame), 4))
 
+
+# Testing file_statistics_visualizer and print_directory_driver
+file_statistics_visualizer()
 print_directory_driver()
+
+
 cat('\014')  # Clear console
 rm(list = ls())  # Clear variables
+dev.off()  # Clear plots

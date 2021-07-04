@@ -3,8 +3,9 @@
 library(stringr)
 library(dplyr)
 
-# Driver function for the file_statistics_visualizer function
-file_statistics_visualizer_driver <- function(){
+# Driver function. Prompts the user for a directory, then displays the statistics about the
+# directory.
+file_statistics_visualizer <- function(){
   name = readline(prompt = "Directory or file name: ")  # Get user input on directory
   if (!dir.exists(name) && !file.exists(name)){
     print("That file or directory does not exist")
@@ -24,30 +25,40 @@ file_statistics_visualizer_driver <- function(){
   }
 }
 
+
+# Creates bar chart of the counts of each file type contained in data_frame
 create_bar_chart <- function(data_frame){
   barplot(data_frame$frequency,
           main = "Counts of file types",
           xlab = "File type",
           ylab = "Frequency",
           names = data_frame$file_type,
-          col = "blue")
+          col = rainbow(length(data_frame$file_type)))
 }
 
+
+# Creates pie chart of the percentages of each file type contained in data_frame
 create_pie_chart <- function(data_frame){
   frequency <- data_frame$frequency
-  pie_percentages <- round(100 * frequency / sum(frequency), 2)
+  pie_percentages <- round(100 * frequency / sum(frequency), 1)
+  pie_percentages <- paste0(pie_percentages, "%")
+  
+  dev.new()
   pie(frequency,
       labels = pie_percentages,
       main = "File type percentages in this directory", 
-      col = rainbow(length(frequency)))
+      col = rainbow(length(frequency)),
+      clockwise = FALSE)
+  
   legend("bottomleft",
-         labels = data_frame$file_type,
+         data_frame$file_type,
          cex = 0.8,
          fill = rainbow(length(frequency)))
 }
 
-# Adds a file type to the file_frequency data frame
-# @param file_type is the name of the file type as a character data type
+
+# Adds a file type to the file_frequency data frame. file_type is the name of the file type as
+# a character data type.
 add_file_type_to_data_frame <- function(file_type, data_frame){
   # data_frame$file_type = append(data_frame$file_type, "pdf")
   if (any(data_frame == file_type)){  # If the data frame already has the file type...
@@ -66,8 +77,9 @@ add_file_type_to_data_frame <- function(file_type, data_frame){
   return(data_frame)
 }
 
-# Determines the file type of a certain file
-# @param name is the name of the file to find the file type of. name is a character.
+
+# Determines the file type of a certain file. name is the name of the file to find the file type of.
+# name is a character.
 find_file_type <- function(name){
   file_name = basename(name)
   split_name = strsplit(file_name, split = ".", fixed = TRUE)
@@ -77,7 +89,7 @@ find_file_type <- function(name){
   # Accounts for files like ".gitignore"
   }else if((length(split_name[[1]]) == 1) && (str_count(name, "\\.") == 1)){
     file_type = tolower(tail(split_name[[1]], n = 1))
-  # Accounts for all other files, even including "Digital-Signal-Processor.vcxproj.filters"
+  # Accounts for all other files, including "Digital-Signal-Processor.vcxproj.filters"
   }else{
     locate_all_periods = str_locate_all(pattern = "\\.", file_name)
     first_period_location = locate_all_periods[[1]][1, 1]
@@ -86,7 +98,8 @@ find_file_type <- function(name){
   return(file_type)
 }
 
-# Function that updates a data frame with the file types within a given directory
+
+# Updates a data frame with the file types within a given directory
 get_file_statistics <- function(name, data_frame){
   if (!dir.exists(name)){  # If it is not a directory, then it must be a file
     file_type = find_file_type(name)
