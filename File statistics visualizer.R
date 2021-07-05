@@ -48,13 +48,13 @@ create_pie_chart <- function(data_frame){
   dev.new()
   pie(frequency,
       labels = pie_percentages,
-      main = "File type percentages in this directory", 
+      main = "File type percentages in chosen directory", 
       col = rainbow(length(frequency)),
       clockwise = FALSE)
   
   legend("bottomleft",
          data_frame$file_type,
-         cex = 0.8,
+         cex = 0.65,
          fill = rainbow(length(frequency)))
 }
 
@@ -83,7 +83,8 @@ add_file_type_to_data_frame <- function(file_type, data_frame){
 # Determines the file type of a certain file. name is the name of the file to find the file type of.
 # name is a character.
 find_file_type <- function(name){
-  file_type <- file_ext(name)
+  file_name <- basename(name)
+  file_type <- tolower(file_ext(file_name))
   if (file_type == ""){
     file_type <- "No file type"
   }

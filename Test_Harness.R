@@ -18,7 +18,7 @@ test_that("gitignore", expect_equal(find_file_type(
   r"(C:\Users\leewa\Documents\Important documents\Computer Science\Digital-Signal-Processor\.gitignore)"), "gitignore"))
 test_that("File type of files with more than 1 period", expect_equal(find_file_type(
   r"(C:\Users\leewa\Documents\Important documents\Computer Science\Digital-Signal-Processor\Digital-Signal-Processor.vcxproj.user)"),
-  "vcxproj.user"))
+  "user"))
 test_that("No file type", expect_equal(find_file_type("none"), "No file type"))
 
 
