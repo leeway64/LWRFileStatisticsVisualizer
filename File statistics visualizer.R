@@ -30,6 +30,7 @@ file_statistics_visualizer <- function(){
 
 # Creates bar chart of the counts of each file type contained in data_frame
 create_bar_chart <- function(data_frame){
+  dev.new()
   barplot(data_frame$frequency,
           main = "Counts of file types",
           xlab = "File type",
@@ -48,7 +49,7 @@ create_pie_chart <- function(data_frame){
   dev.new()
   pie(frequency,
       labels = pie_percentages,
-      main = "File type percentages in chosen directory", 
+      main = "File type percentages", 
       col = rainbow(length(frequency)),
       clockwise = FALSE)
   
