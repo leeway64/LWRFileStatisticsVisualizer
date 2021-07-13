@@ -3,8 +3,8 @@ library(testthat)
 
 
 # Provides the print_directory function
-source(r"(C:\Users\leewa\Documents\Important documents\Computer Science\R Projects\File statistics visualizer\Print directory.R)")
-source(r"(C:\Users\leewa\Documents\Important documents\Computer Science\R Projects\File statistics visualizer\File statistics visualizer.R)")
+source("Print directory.R")
+source("File statistics visualizer.R")
 
 
 # File type identification testing
