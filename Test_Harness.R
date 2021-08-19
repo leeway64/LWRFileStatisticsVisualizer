@@ -1,10 +1,10 @@
-# Testing
+# Test harness
+
 library(testthat)
+library(here)
 
-
-# Provides the print_directory function
-source("Print directory.R")
-source("File statistics visualizer.R")
+source(here("Print directory.R"))
+source(here("File statistics visualizer.R"))
 
 
 # File type identification testing
@@ -60,7 +60,7 @@ file_frequency_data_frame <- data.frame(
   stringsAsFactors = FALSE
 )
 
-directory = r"(C:\Users\leewa\Documents\Important documents\Computer Science\R Projects\File statistics visualizer\Test directory)"
+directory = here("Test directory")
 file_frequency_data_frame <- get_file_statistics(directory, file_frequency_data_frame)
 test_that("2 txt files", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "txt", 2], 2))
 test_that("1 pptx file", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "pptx", 2], 1))
@@ -76,7 +76,7 @@ file_frequency_data_frame <- data.frame(
 )
 
 # This directory contains no files or other directories
-directory = r"(C:\Users\leewa\Documents\Important documents\Computer Science\R Projects\File statistics visualizer\Test directory\Subdir2\SubdirB)"
+directory = here("Test directory", "Subdir2", "SubdirB")
 file_frequency_data_frame <- get_file_statistics(directory, file_frequency_data_frame)
 test_that("Empty file_type vector", expect_equal(length(file_frequency_data_frame$file_type) == 0, TRUE))
 test_that("Empty frequency vector", expect_equal(length(file_frequency_data_frame$frequency) == 0, TRUE))
@@ -90,7 +90,7 @@ file_frequency_data_frame <- data.frame(
 )
 
 # Testing an actual directory
-directory = r"(C:\Users\leewa\Documents\Important documents\Learning Chinese\CHIN 111\Midterm - Oral)"
+directory = here("Midterm - Oral")
 file_frequency_data_frame <- get_file_statistics(directory, file_frequency_data_frame)
 test_that("2 jpg files", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "jpg", 2], 2))
 test_that("4 pdf files", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "pdf", 2], 4))
@@ -102,8 +102,3 @@ test_that("4 rows/file types in DF", expect_equal(nrow(file_frequency_data_frame
 # Testing file_statistics_visualizer and print_directory_driver
 file_statistics_visualizer()
 print_directory_driver()
-
-
-cat('\014')  # Clear console
-rm(list = ls())  # Clear variables
-dev.off()  # Clear plots
