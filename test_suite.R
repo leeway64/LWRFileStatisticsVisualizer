@@ -83,22 +83,6 @@ test_that("Empty frequency vector", expect_equal(length(file_frequency_data_fram
 test_that("0 rows/file types in DF", expect_equal(nrow(file_frequency_data_frame), 0))
 
 
-file_frequency_data_frame <- data.frame(
-  file_type <- c(),
-  frequency <- c(),
-  stringsAsFactors = FALSE
-)
-
-# Testing an actual directory
-directory = here("Midterm - Oral")
-file_frequency_data_frame <- get_file_statistics(directory, file_frequency_data_frame)
-test_that("2 jpg files", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "jpg", 2], 2))
-test_that("4 pdf files", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "pdf", 2], 4))
-test_that("1 file with no file type", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "No file type", 2], 1))
-test_that("3 docx files", expect_equal(file_frequency_data_frame[file_frequency_data_frame$file_type == "docx", 2], 3))
-test_that("4 rows/file types in DF", expect_equal(nrow(file_frequency_data_frame), 4))
-
-
 # Testing file_statistics_visualizer and print_directory_driver
-file_statistics_visualizer()
-print_directory_driver()
+# file_statistics_visualizer()
+# print_directory_driver()
