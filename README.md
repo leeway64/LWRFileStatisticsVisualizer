@@ -17,3 +17,11 @@ and subdirectory within a user-inputted directory.
 
 2. In the R console of the root directory of this repository, enter `testthat::test_dir(here())` to
    run the unit tests.
+
+## Third-Party Software
+
+- [testthat](https://testthat.r-lib.org/) (MIT license): Unit testing framework.
+
+- [dplyr](https://dplyr.tidyverse.org/) (MIT license): Data manipulation library.
+
+- [stringr](https://stringr.tidyverse.org/) (MIT license): String manipulation library.
