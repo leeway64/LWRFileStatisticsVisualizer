@@ -11,6 +11,20 @@ A bar chart and pie chart are created to show the relative popularity of each fi
 As an added bonus, this project also includes an extra function for printing out every single file
 and subdirectory within a user-inputted directory.
 
+
+## Usage
+
+First, clone this repository onto your local machine:
+
+```bash
+git clone https://github.com/leeway64/File-statistics-visualizer.git
+```
+
+
+
+Alternatively, you may also run the scripts in RStudio.
+
+
 ## Running Unit Tests
 
 1. Install the `testthat` package.
