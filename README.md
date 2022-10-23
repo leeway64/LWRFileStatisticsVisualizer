@@ -12,15 +12,28 @@ As an added bonus, this project also includes an extra function for printing out
 and subdirectory within a user-inputted directory.
 
 
-## Usage
+## Installation
 
-First, clone this repository onto your local machine:
+Clone this repository onto your local machine:
 
 ```bash
 git clone https://github.com/leeway64/File-statistics-visualizer.git
+cd src
 ```
 
+## LWRFileStatisticsVisualizer Usage Example
 
+```bash
+Rscript file-statistics-visualizer.R
+
+```
+
+## print-directory Usage Example
+
+```bash
+Rscript print-directory.R
+
+```
 
 Alternatively, you may also run the scripts in RStudio.
 

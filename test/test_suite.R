@@ -1,4 +1,4 @@
-# Test harness
+# Test suite
 
 library(testthat)
 library(here)
@@ -81,8 +81,3 @@ file_frequency_data_frame <- get_file_statistics(directory, file_frequency_data_
 test_that("Empty file_type vector", expect_equal(length(file_frequency_data_frame$file_type) == 0, TRUE))
 test_that("Empty frequency vector", expect_equal(length(file_frequency_data_frame$frequency) == 0, TRUE))
 test_that("0 rows/file types in DF", expect_equal(nrow(file_frequency_data_frame), 0))
-
-
-# Testing file_statistics_visualizer and print_directory_driver
-# file_statistics_visualizer()
-# print_directory_driver()

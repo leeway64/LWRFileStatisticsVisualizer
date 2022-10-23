@@ -11,7 +11,7 @@ file_statistics_visualizer <- function(){
   name = readline(prompt = "Directory or file name: ")  # Get user input on directory
   if (!dir.exists(name) && !file.exists(name)){
     print("That file or directory does not exist")
-  }else{
+  } else {
     # Data frame that holds the counts of each file type
     file_frequency_data_frame <- data.frame(
       file_type <- c(),
@@ -69,7 +69,7 @@ add_file_type_to_data_frame <- function(file_type, data_frame){
     file_type_index = data_frame$file_type == file_type
     data_frame[file_type_index, 2] = 1 + data_frame[file_type_index, 2]
 
-  }else {  # If not, then create a new row labeled with the file type and set the count to 1
+  } else {  # If not, then create a new row labeled with the file type and set the count to 1
     new_file_type_row <- data.frame(
       file_type = c(file_type),
       frequency = c(1),
@@ -77,6 +77,7 @@ add_file_type_to_data_frame <- function(file_type, data_frame){
     )
     data_frame <- rbind(data_frame, new_file_type_row)
   }
+  
   return(data_frame)
 }
 
@@ -86,24 +87,26 @@ add_file_type_to_data_frame <- function(file_type, data_frame){
 find_file_type <- function(name){
   file_name <- basename(name)
   file_type <- tolower(file_ext(file_name))
-  if (file_type == ""){
+  if (file_type == "") {
     file_type <- "No file type"
   }
+  
   return(file_type)
 }
 
 
 # Updates a data frame with the file types within a given directory
 get_file_statistics <- function(name, data_frame){
-  if (!dir.exists(name)){  # If it is not a directory, then it must be a file
+  if (!dir.exists(name)) {  # If it is not a directory, then it must be a file
     file_type = find_file_type(name)
     data_frame = add_file_type_to_data_frame(file_type, data_frame)
   } else {  # If it is a directory...
     # list.files lists all files and subdirectories within the current directory
-    for (file in list.files(name)){
+    for (file in list.files(name)) {
       path = file.path(name, file)
       data_frame <- get_file_statistics(path, data_frame)
     }
   }
+  
   return(data_frame)
 }
