@@ -2,9 +2,10 @@
 
 
 print_directory_driver <- function() {
-  name = readline(prompt = "Directory or file name: ")  # Get user input on directory
+  cat("Directory or file name: ")
+  name = readLines("stdin", n=1)
   if (!dir.exists(name) && !file.exists(name)){
-    print("That file or directory does not exist")
+    cat("That file or directory does not exist\n")
   } else {
     print_directory(name, 0)
   }
@@ -18,7 +19,7 @@ print_directory <- function(name, level) {
     }
   }
   
-  print(basename(name))
+  cat(paste(basename(name), "\n"))
   if (dir.exists(name)) {
     # list.files lists all files and subdirectories within the current directory
     for (file in list.files(name)) {
@@ -27,3 +28,6 @@ print_directory <- function(name, level) {
     }
   }
 }
+
+
+print_directory_driver()
