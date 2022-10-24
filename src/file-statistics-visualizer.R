@@ -110,3 +110,5 @@ get_file_statistics <- function(name, data_frame){
   
   return(data_frame)
 }
+
+file_statistics_visualizer()

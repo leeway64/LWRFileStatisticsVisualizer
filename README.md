@@ -4,9 +4,9 @@ directory.
 
 A bar chart and pie chart are created to show the relative popularity of each file type.
 
-![Bar chart](Images/Bar_chart.jpeg)
+![Bar chart](doc/Bar_chart.jpeg)
 
-![Pie chart](Images/Pie_chart.jpeg)
+![Pie chart](doc/Pie_chart.jpeg)
 
 As an added bonus, this project also includes an extra function for printing out every single file
 and subdirectory within a user-inputted directory.
@@ -21,18 +21,34 @@ git clone https://github.com/leeway64/File-statistics-visualizer.git
 cd src
 ```
 
+
 ## LWRFileStatisticsVisualizer Usage Example
 
 ```bash
-Rscript file-statistics-visualizer.R
+R
+source("src/file-statistics-visualizer.R")
+Directory or file name: ~/software/File-statistics-visualizer/test
 
 ```
+
+Note that, after you enter the R Console by running the `R` command, you should see a message
+saying that `Project '~/software/LWRFileStatisticsVisualizer' loaded. [renv 0.16.0]`.
+
 
 ## print-directory Usage Example
 
 ```bash
-Rscript print-directory.R
-
+Rscript print-directory.R 
+Directory or file name: ../test/test-directory-1
+test-directory-1 
+    Subdir1 
+        New Microsoft PowerPoint Presentation.pptx 
+    Subdir2 
+        New Microsoft Excel Worksheet.xlsx 
+        SubdirA 
+            New Microsoft Word Document.docx 
+    test1.txt 
+    test2.txt
 ```
 
 Alternatively, you may also run the scripts in RStudio.
@@ -40,10 +56,14 @@ Alternatively, you may also run the scripts in RStudio.
 
 ## Running Unit Tests
 
-1. Install the `testthat` package.
+```bash
+R
+testthat::test_dir(here())
 
-2. In the R console of the root directory of this repository, enter `testthat::test_dir(here())` to
-   run the unit tests.
+```
+
+Ensure you enter the R Console before running the `testthat::test_dir` command.
+
 
 ## Third-Party Software
 
