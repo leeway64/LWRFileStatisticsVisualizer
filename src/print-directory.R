@@ -28,6 +28,3 @@ print_directory <- function(name, level) {
     }
   }
 }
-
-
-print_directory_driver()
