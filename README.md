@@ -21,18 +21,24 @@ Clone this repository onto your local machine:
 
 ```bash
 git clone https://github.com/leeway64/LWRFileStatisticsVisualizer.git
-cd src
+R
+renv::restore()
 ```
+
+The `renv::restore()` command will install the required R libraries.
 
 
 ## LWRFileStatisticsVisualizer Example
 
 ```
 R
-source("src/file-statistics-visualizer.R")
-Directory or file name: ~/software/File-statistics-visualizer/test
+source("bin/run-LWRFileStatisticsVisualizer.R")
+Directory or file name: test
 
 ```
+
+The root directory of LWRFileStatisticsVisualizer is the root directory of the
+LWRFileStatisticsVisualizer project.
 
 Note that, after you enter the R Console by running the `R` command, you should see a message
 saying that `Project '~/software/LWRFileStatisticsVisualizer' loaded. [renv 0.16.0]`.
@@ -41,8 +47,8 @@ saying that `Project '~/software/LWRFileStatisticsVisualizer' loaded. [renv 0.16
 ## print-directory Example
 
 ```bash
-Rscript print-directory.R 
-Directory or file name: ../test/test-directory-1
+Rscript bin/run-print-directory.R 
+Directory or file name: test/test-directory-1
 test-directory-1 
     Subdir1 
         New Microsoft PowerPoint Presentation.pptx 
@@ -76,3 +82,4 @@ Ensure you enter the R Console before running the `testthat::test_dir` command.
 let's your create environments similar to Python virtual environments.
 - [dplyr](https://dplyr.tidyverse.org/) (MIT license): Data manipulation library.
 - [stringr](https://stringr.tidyverse.org/) (MIT license): String manipulation library.
+- [box](https://klmr.me/box/) (MIT License): Package to increase modularity of R code.

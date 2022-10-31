@@ -13,7 +13,7 @@ test_file_type_identification <- function()
     test_that("pdf", expect_equal(find_file_type("file.pdf"), "pdf"))
     test_that("docx", expect_equal(find_file_type("word.docx"), "docx"))
     test_that("md", expect_equal(find_file_type(here("README.md")), "md"))
-    test_that("Lowercase r", expect_equal(find_file_type(here("test", "test_suite.R"), "r"))
+    test_that("Lowercase r", expect_equal(find_file_type(here("test", "test_suite.R"), "r")))
     test_that("gitignore", expect_equal(find_file_type(here(".gitignore")), "gitignore"))
     test_that("No file type", expect_equal(find_file_type("none"), "No file type"))
 }

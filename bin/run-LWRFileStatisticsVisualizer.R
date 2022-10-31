@@ -1,4 +1,8 @@
 library(here)
 source(here("src", "LWRFileStatisticsVisualizer.R"))
 
-file_statistics_visualizer()
+
+if (is.null(box::name()))
+{
+    file_statistics_visualizer()
+}
