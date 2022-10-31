@@ -1,15 +1,18 @@
 # File Statistics Visualizer
-This project visualizes and displays several statistics about the types of files inside a given
-directory.
 
-A bar chart and pie chart are created to show the relative popularity of each file type.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/leeway64/LWRFileStatisticsVisualizer)
+
+
+This project visualizes several statistics about the types of files inside a given directory; a bar
+chart and pie chart are created to show the relative popularity of each file type.
 
 ![Bar chart](doc/Bar_chart.jpeg)
 
 ![Pie chart](doc/Pie_chart.jpeg)
 
-As an added bonus, this project also includes an extra function for printing out every single file
-and subdirectory within a user-inputted directory.
+As a bonus, this project also includes an extra program, `print-directory`, for printing out every
+single file and subdirectory within a specific directory.
 
 
 ## Installation
@@ -17,14 +20,14 @@ and subdirectory within a user-inputted directory.
 Clone this repository onto your local machine:
 
 ```bash
-git clone https://github.com/leeway64/File-statistics-visualizer.git
+git clone https://github.com/leeway64/LWRFileStatisticsVisualizer.git
 cd src
 ```
 
 
-## LWRFileStatisticsVisualizer Usage Example
+## LWRFileStatisticsVisualizer Example
 
-```bash
+```
 R
 source("src/file-statistics-visualizer.R")
 Directory or file name: ~/software/File-statistics-visualizer/test
@@ -35,7 +38,7 @@ Note that, after you enter the R Console by running the `R` command, you should 
 saying that `Project '~/software/LWRFileStatisticsVisualizer' loaded. [renv 0.16.0]`.
 
 
-## print-directory Usage Example
+## print-directory Example
 
 ```bash
 Rscript print-directory.R 
@@ -68,7 +71,8 @@ Ensure you enter the R Console before running the `testthat::test_dir` command.
 ## Third-Party Software
 
 - [testthat](https://testthat.r-lib.org/) (MIT license): Unit testing framework.
-
+- [here](https://here.r-lib.org/) (MIT License): Library for making file referencing easier.
+- [renv](https://rstudio.github.io/renv/) (MIT License): Reproducible environment creation library;
+let's your create environments similar to Python virtual environments.
 - [dplyr](https://dplyr.tidyverse.org/) (MIT license): Data manipulation library.
-
 - [stringr](https://stringr.tidyverse.org/) (MIT license): String manipulation library.
