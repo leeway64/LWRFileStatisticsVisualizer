@@ -7,9 +7,9 @@
 This project visualizes several statistics about the types of files inside a given directory; a bar
 chart and pie chart are created to show the relative popularity of each file type.
 
-![Bar chart](doc/Bar_chart.jpeg)
+![Bar chart 1](doc/bar-chart-1.jpeg)
 
-![Pie chart](doc/Pie_chart.jpeg)
+![Pie chart 1](doc/pie-chart-1.jpeg)
 
 As a bonus, this project also includes an extra program, `print-directory`, for printing out every
 single file and subdirectory within a specific directory.
@@ -30,12 +30,18 @@ The `renv::restore()` command will install the required R libraries.
 
 ## LWRFileStatisticsVisualizer Example
 
+After running the following commands:
 ```
 R
 source("bin/run-LWRFileStatisticsVisualizer.R")
 Directory or file name: test
-
 ```
+
+You should see the following two graphics:
+
+![Bar chart 2](doc/bar-chart-2.jpeg)
+
+![Pie chart 2](doc/pie-chart-2.jpeg)
 
 The root directory of LWRFileStatisticsVisualizer is the root directory of the
 LWRFileStatisticsVisualizer project.
@@ -60,7 +66,9 @@ test-directory-1
     test2.txt
 ```
 
-Alternatively, you may also run the scripts in RStudio.
+Alternatively, you may also run the aforementioned scripts in RStudio; the
+[`LWRFileStatisticsVisualizer.Rproj`](LWRFileStatisticsVisualizer.Rproj) file has been provided for
+this purpose.
 
 
 ## Running Unit Tests
