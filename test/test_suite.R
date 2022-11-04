@@ -3,8 +3,8 @@
 library(testthat)
 library(here)
 
-source(here("print-directory.R"))
-source(here("LWRFileStatisticsVisualizer.R"))
+source(here("src", "print-directory.R"))
+source(here("src", "LWRFileStatisticsVisualizer.R"))
 
 
 # File type identification testing
@@ -76,7 +76,7 @@ test_test_directory_1_frequencies <- function()
 test_empty_directory_frequencies <- function()
 {
     # Need to create an empty directory because empty directories can't be committed using Git
-    dir.create(here("test", "test-directory-1", "Subdir2", "SubdirB"))
+    dir.create(here("test", "test-directory-2", "Subdir0", "SubdirZ"))
     file_frequency_data_frame <- data.frame(
       file_type <- c(),
       frequency <- c(),
@@ -84,9 +84,18 @@ test_empty_directory_frequencies <- function()
     )
 
     # This directory contains no files or other directories
-    directory = here("test", "test-directory-1", "Subdir2", "SubdirB")
+    directory = here("test", "test-directory-2", "Subdir0", "SubdirZ")
     file_frequency_data_frame <- get_file_statistics(directory, file_frequency_data_frame)
     test_that("Empty file_type vector", expect_equal(length(file_frequency_data_frame$file_type) == 0, TRUE))
     test_that("Empty frequency vector", expect_equal(length(file_frequency_data_frame$frequency) == 0, TRUE))
     test_that("0 rows/file types in DF", expect_equal(nrow(file_frequency_data_frame), 0))
+}
+
+
+if (is.null(box::name()))
+{
+    test_file_type_identification()
+    test_adding_file_type_to_data_frame()
+    test_test_directory_1_frequencies()
+    #test_empty_directory_frequencies
 }
