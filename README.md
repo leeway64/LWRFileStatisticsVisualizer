@@ -75,7 +75,7 @@ this purpose.
 
 ```bash
 R
-testthat::test_dir(here())
+testthat::test_dir(here::here("test"))
 
 ```
 

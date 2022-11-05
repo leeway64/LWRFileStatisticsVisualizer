@@ -13,7 +13,7 @@ test_file_type_identification <- function()
     test_that("pdf", expect_equal(find_file_type("file.pdf"), "pdf"))
     test_that("docx", expect_equal(find_file_type("word.docx"), "docx"))
     test_that("md", expect_equal(find_file_type(here("README.md")), "md"))
-    test_that("Lowercase r", expect_equal(find_file_type(here("test", "test_suite.R"), "r")))
+    test_that("r", expect_equal(find_file_type(here("test", "test_suite.R")), "r"))
     test_that("gitignore", expect_equal(find_file_type(here(".gitignore")), "gitignore"))
     test_that("No file type", expect_equal(find_file_type("none"), "No file type"))
 }
@@ -89,6 +89,9 @@ test_empty_directory_frequencies <- function()
     test_that("Empty file_type vector", expect_equal(length(file_frequency_data_frame$file_type) == 0, TRUE))
     test_that("Empty frequency vector", expect_equal(length(file_frequency_data_frame$frequency) == 0, TRUE))
     test_that("0 rows/file types in DF", expect_equal(nrow(file_frequency_data_frame), 0))
+    
+    # Delete the directory that was created earlier
+    unlink(here("test", "test-directory-2", "Subdir0", "SubdirZ"), recursive = TRUE)
 }
 
 
@@ -97,5 +100,5 @@ if (is.null(box::name()))
     test_file_type_identification()
     test_adding_file_type_to_data_frame()
     test_test_directory_1_frequencies()
-    #test_empty_directory_frequencies
+    test_empty_directory_frequencies()
 }
