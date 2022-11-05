@@ -52,6 +52,8 @@ saying something to the effect of `Project 'path/to/LWRFileStatisticsVisualizer'
 
 ## print-directory Example
 
+Run the following commands directly in the terminal:
+
 ```bash
 Rscript bin/run-print-directory.R 
 Directory or file name: test/test-directory-1
@@ -76,7 +78,6 @@ this purpose.
 ```bash
 R
 testthat::test_dir(here::here("test"))
-
 ```
 
 Ensure you enter the R Console before running the `testthat::test_dir` command.
