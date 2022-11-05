@@ -47,7 +47,7 @@ The root directory of LWRFileStatisticsVisualizer is the root directory of the
 LWRFileStatisticsVisualizer project.
 
 Note that, after you enter the R Console by running the `R` command, you should see a message
-saying that `Project '~/software/LWRFileStatisticsVisualizer' loaded. [renv 0.16.0]`.
+saying something to the effect of `Project 'path/to/LWRFileStatisticsVisualizer' loaded. [renv 0.16.0]`.
 
 
 ## print-directory Example
