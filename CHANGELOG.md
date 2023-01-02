@@ -9,5 +9,11 @@ this project follows [semantic versioning](https://semver.org/).
 - None
 
 
+## [1.0.1] - 2023-1-1
+### Changed
+- Updated README and gitignore
+- Updated year in license
+
+
 ## [1.0.0] - 2022-11-4
 - Initial release
