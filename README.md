@@ -1,4 +1,4 @@
-# File Statistics Visualizer
+# LWRFileStatisticsVisualizer
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/leeway64/LWRFileStatisticsVisualizer)
@@ -21,6 +21,7 @@ Clone this repository onto your local machine:
 
 ```bash
 git clone https://github.com/leeway64/LWRFileStatisticsVisualizer.git
+cd LWRFileStatisticsVisualizer
 R
 renv::restore()
 ```
