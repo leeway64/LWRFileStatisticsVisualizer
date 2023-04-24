@@ -6,8 +6,13 @@ this project follows [semantic versioning](https://semver.org/).
 
 
 ## Unreleased
-- None
+### Added
+- Instructions on how to use `renv`
 
+
+## [1.0.2] - 2023-m-d
+### Added
+- 
 
 ## [1.0.1] - 2023-1-1
 ### Changed

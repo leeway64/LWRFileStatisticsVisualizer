@@ -1,0 +1,18 @@
+more information here: https://rstudio.github.io/renv/articles/renv.html
+most information in this section was pulled from the infrastructure section: https://rstudio.github.io/renv/articles/renv.html#infrastructure
+
+1. install renv
+    R
+    install.packages('renv')
+2. create a new project environment, similar to a Python virtual environment
+    renv::init
+3. install and remove R packages as necessary
+4. Save the dependencies/packages used in the project to renv.lock (the lockfile)
+    renv::snapshot
+5. install and remove R packages as necessary
+6. save the project state by calling renv::snapshot again, or go back to the previous state as recorded
+   by the lockfile with renv::restore
+
+When committing files to git, make sure to commit the .Rprofile, renv.lock and renv/activate.R file.
+Also, it might be helpful to commit the renv/.gitignore file.
+the renv/library folder is usually ignored. renv::init will write the required ignore statements to .gitignore.

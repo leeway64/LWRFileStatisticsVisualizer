@@ -18,7 +18,6 @@ single file and subdirectory within a specific directory.
 ## Installation
 
 Clone this repository onto your local machine:
-
 ```bash
 git clone https://github.com/leeway64/LWRFileStatisticsVisualizer.git
 cd LWRFileStatisticsVisualizer
@@ -27,6 +26,14 @@ renv::restore()
 ```
 
 The `renv::restore()` command will install the required R libraries.
+
+`renv` stands for reproducible environments. To learn more about `renv`, refer to
+[their website](https://rstudio.github.io/renv/articles/renv.html), or run the following instructions
+to create a PDF, out of `LaTeX`, of the short instructions I have created.
+
+```bash
+how-to-use-renv.tex
+```
 
 
 ## LWRFileStatisticsVisualizer Example
