@@ -9,4 +9,11 @@
 
 renv/settings.dcf
 
+# JetBrains IDE settings
 .idea/
+
+# Files generated from pdflatex
+*.pdf
+*.aux
+*.log
+*.toc

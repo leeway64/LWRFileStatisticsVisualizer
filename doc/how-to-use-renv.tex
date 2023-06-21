@@ -1,33 +1,57 @@
-more information here: https://rstudio.github.io/renv/articles/renv.html
-most information in this section was pulled from the infrastructure section: https://rstudio.github.io/renv/articles/renv.html#infrastructure
+\documentclass{article}
+\title{How to use renv}
+\date{2023}
+\begin{document}
+  
+\maketitle
+  
+\tableofcontents
 
-How to create a new project environment
+\section{Using renv in a Project}
+More information here: \verb|https://rstudio.github.io/renv/articles/renv.html|
 
-1. install renv. make sure to enter the R REPL by using the `R` command.
+\begin{enumerate}
+    \item Install renv. make sure to enter the R REPL by using the `R` command.
+    \begin{verbatim}
     R
     install.packages('renv')
-2. create a new project environment, similar to a Python virtual environment
-    renv::init()
+    \end{verbatim}
+    \item Create a new project environment, similar to a Python virtual environment
+    \begin{verbatim}renv::init()\end{verbatim}
 	
-	you should see a message to the effect of
+	After initialization, you should see a message to the effect of
+	\begin{verbatim}
 	* Project 'PATH/TO/PROJECT' loaded. [renv 0.17.3]
 	* renv activated -- please restart the R session
-3. install and remove R packages as necessary
-4. Save the dependencies/packages used in the project to renv.lock (the lockfile)
-    renv::snapshot()
-5. install and remove R packages as necessary
-6. save the project state by calling renv::snapshot() again, or go back to the previous state as recorded
-   by the lockfile with renv::restore()
+    \end{verbatim}
+    \item install and remove R packages as necessary
+    \item Save the dependencies/packages used in the project to renv.lock (the lockfile)
+    \begin{verbatim}renv::snapshot()\end{verbatim}
+    \item install and remove R packages as necessary
+    \item save the project state by calling renv::snapshot() again, or go back to the previous state as recorded by the lockfile with renv::restore()
+\end{enumerate}
 
-When committing files to git, make sure to commit the .Rprofile, renv.lock and renv/activate.R file.
-Also, it might be helpful to commit the renv/.gitignore file. renv::init will write the required ignore statements to .gitignore. the renv/library folder is usually ignored.
-committing the renv/settings.json file is optional
+\section{How to use renv after Cloning a Project}
+\begin{enumerate}
+    \item Clone a repository that uses renv
+	\begin{verbatim}
+	    git clone [URL]
+    \end{verbatim}
+    \item Restore/install the packages listed in the lockfile
+	\begin{verbatim}
+    R
+    renv::restore()
+	\end{verbatim}
+\end{enumerate}
 
-How to use renv after cloning
-
-1. clone a repo that uses renv
-	git clone ...
-
-2. restore/install the packages listed in the lockfile
-	R
-	renv::restore()
+\section{Miscellaneous Information}
+Most information in this section was pulled from the infrastructure section: \verb|https://rstudio.github.io/renv/articles/renv.html#infrastructure|
+\begin{itemize}
+    \item When committing files to git, make sure to commit the .Rprofile, renv.lock and renv/activate.R file
+    \begin{itemize}
+        \item Also, it might be helpful to commit the renv/.gitignore file (renv::init will write the required ignore statements to .gitignore)
+        \item Note that the renv/library folder is usually ignored
+    \end{itemize}
+    \item Committing the renv/settings.json file is optional
+\end{itemize}
+\end{document}

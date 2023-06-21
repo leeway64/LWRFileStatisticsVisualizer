@@ -28,11 +28,11 @@ renv::restore()
 The `renv::restore()` command will install the required R libraries.
 
 `renv` stands for reproducible environments. To learn more about `renv`, refer to
-[their website](https://rstudio.github.io/renv/articles/renv.html), or run the following instructions
+[their website](https://rstudio.github.io/renv/articles/renv.html), or run the following script
 to create a PDF, out of `LaTeX`, of the short instructions I have created.
 
 ```bash
-how-to-use-renv.tex
+bash src/convert-latex-to-pdf.sh
 ```
 
 
@@ -100,3 +100,11 @@ let's your create environments similar to Python virtual environments.
 - [dplyr](https://dplyr.tidyverse.org/) (MIT license): Data manipulation library.
 - [stringr](https://stringr.tidyverse.org/) (MIT license): String manipulation library.
 - [box](https://klmr.me/box/) (MIT License): Package to increase modularity of R code.
+
+In addition to the previous sofware, this project also uses texlive, texinfo,
+texlive-fonts-recommended, and texlive-fonts-extra to convert LaTeX to PDF. For Ubuntu-based
+systems, refer to this [page](https://linuxhint.com/convert-tex-latex-file-to-pdf/) for how to
+install these packages.
+
+To learn more about how to use LaTeX in general, [this page](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes)
+provides many useful examples.
