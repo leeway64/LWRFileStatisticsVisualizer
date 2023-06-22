@@ -1,57 +1,92 @@
 \documentclass{article}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={How to use renv},
+    }
+
+\urlstyle{same}
+
 \title{How to use renv}
 \date{2023}
 \begin{document}
-  
+
 \maketitle
   
 \tableofcontents
 
 \section{Using renv in a Project}
-More information here: \verb|https://rstudio.github.io/renv/articles/renv.html|
+Refer to the \href{https://rstudio.github.io/renv/articles/renv.html#workflow}{Workflow section of the renv website} for more information.
 
 \begin{enumerate}
-    \item Install renv. make sure to enter the R REPL by using the `R` command.
+    \item Install renv (make sure to enter the R REPL by using the \verb|R| command)
     \begin{verbatim}
-    R
-    install.packages('renv')
+        R
+        install.packages('renv')
     \end{verbatim}
-    \item Create a new project environment, similar to a Python virtual environment
-    \begin{verbatim}renv::init()\end{verbatim}
-	
+    
+    \item Create a new project environment, which is similar to a Python virtual environment
+    \begin{verbatim}
+        renv::init()
+    \end{verbatim}
+    
 	After initialization, you should see a message to the effect of
 	\begin{verbatim}
-	* Project 'PATH/TO/PROJECT' loaded. [renv 0.17.3]
-	* renv activated -- please restart the R session
+	    * Project 'PATH/TO/PROJECT' loaded. [renv 0.17.3]
+	    * renv activated -- please restart the R session
     \end{verbatim}
-    \item install and remove R packages as necessary
+    
+    \item Install and remove R packages as necessary
+    \begin{verbatim}
+        R
+        install.packages([PACKAGE_NAME])
+    \end{verbatim}
+    
     \item Save the dependencies/packages used in the project to renv.lock (the lockfile)
-    \begin{verbatim}renv::snapshot()\end{verbatim}
-    \item install and remove R packages as necessary
-    \item save the project state by calling renv::snapshot() again, or go back to the previous state as recorded by the lockfile with renv::restore()
+    \begin{verbatim}
+        renv::snapshot()
+    \end{verbatim}
+    
+    \item Install and remove R packages as necessary
+    \item Save the project state by calling renv::snapshot() again, or go back to the previous state as recorded by the lockfile with renv::restore()
 \end{enumerate}
+
 
 \section{How to use renv after Cloning a Project}
 \begin{enumerate}
     \item Clone a repository that uses renv
 	\begin{verbatim}
-	    git clone [URL]
+	    git clone [REPO_URL]
     \end{verbatim}
+    
     \item Restore/install the packages listed in the lockfile
 	\begin{verbatim}
-    R
-    renv::restore()
+        R
+        renv::restore()
 	\end{verbatim}
 \end{enumerate}
 
+
 \section{Miscellaneous Information}
-Most information in this section was pulled from the infrastructure section: \verb|https://rstudio.github.io/renv/articles/renv.html#infrastructure|
+Most information in this section was pulled from the
+\href{https://rstudio.github.io/renv/articles/renv.html#infrastructure}{Infrastructure section of the renv website}.
+
 \begin{itemize}
-    \item When committing files to git, make sure to commit the .Rprofile, renv.lock and renv/activate.R file
+    \item When committing files to git, make sure to commit the .Rprofile, renv.lock and renv/activate.R files
     \begin{itemize}
         \item Also, it might be helpful to commit the renv/.gitignore file (renv::init will write the required ignore statements to .gitignore)
         \item Note that the renv/library folder is usually ignored
     \end{itemize}
     \item Committing the renv/settings.json file is optional
 \end{itemize}
+
+\begin{flushleft}
+Refer to \href{https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes}{this page} for
+instructions on how to get started with LaTeX, and \href{https://www.overleaf.com/learn/latex/Hyperlinks}{this page}
+for instructions on how to use hyperlinks in a LaTeX document.
+\end{flushleft}
 \end{document}

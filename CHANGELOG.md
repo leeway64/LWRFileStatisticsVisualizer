@@ -7,12 +7,13 @@ this project follows [semantic versioning](https://semver.org/).
 
 ## Unreleased
 ### Added
-- Instructions in LaTeX on how to use `renv`
+- None
 
 
-## [1.0.2] - 2023-m-d
+## [1.1.0] - 2023-6-21
 ### Added
-- 
+- Instructions in LaTeX on how to use `renv`
+- Bash script to convert LaTeX to PDF
 
 
 ## [1.0.1] - 2023-1-1

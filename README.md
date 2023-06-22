@@ -29,7 +29,7 @@ The `renv::restore()` command will install the required R libraries.
 
 `renv` stands for reproducible environments. To learn more about `renv`, refer to
 [their website](https://rstudio.github.io/renv/articles/renv.html), or run the following script
-to create a PDF, out of `LaTeX`, of the short instructions I have created.
+to create a PDF, out of `LaTeX`, of the short instructions I have written.
 
 ```bash
 bash src/convert-latex-to-pdf.sh

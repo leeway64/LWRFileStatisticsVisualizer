@@ -17,3 +17,4 @@ renv/settings.dcf
 *.aux
 *.log
 *.toc
+*.out
